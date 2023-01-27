@@ -1,0 +1,4 @@
+--require rails_helper
+--color
+--format doc
+--fail-fast

@@ -1,0 +1,9 @@
+:schedule:
+  forecast_update_bd:
+    cron: '* */3 * * *'
+    class: ForecastJob
+    queue: default
+  check_fill_bd_job:
+    cron: '*/1 * * * *'
+    class: CheckFillBdJob
+    queue: default
