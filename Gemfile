@@ -27,6 +27,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'sidekiq', '~> 6.5'
   gem 'sidekiq-cron'
+  gem 'time', '~> 0.2.1'
 end
 
 group :development do
@@ -41,8 +42,7 @@ group :production do
   gem 'rack-throttle'
 end
 
+gem 'faraday', '~> 2.0'
 gem 'grape'
 gem 'grape_on_rails_routes'
 gem 'multi_json'
-
-gem 'faraday', '~> 2.0'

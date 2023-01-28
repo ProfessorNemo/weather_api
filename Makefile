@@ -14,6 +14,9 @@ rubocop:
 run-console:
 	bundle exec rails console
 
+rspec:
+	bundle exec rspec spec/lib/api/v1/weather_spec.rb
+
 c: run-console
 
 .PHONY:	db

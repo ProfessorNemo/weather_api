@@ -33,14 +33,14 @@ module API
 
         desc 'Returns max temperature for last 24 hours'
         get 'historical/max' do
-          max_temp = turn_to_json(weather_for_last_24h.first)
+          max_temp = turn_to_json(weather_for_last_24h.last)
 
           { record: max_temp, message: 'максимальная температура за сутки' }
         end
 
         desc 'Returns min temperature for last 24 hours'
         get 'historical/min' do
-          min_temp = turn_to_json(weather_for_last_24h.last)
+          min_temp = turn_to_json(weather_for_last_24h.first)
 
           { record: min_temp, message: 'минимальная температура за сутки' }
         end
