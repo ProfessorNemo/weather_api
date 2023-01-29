@@ -1,6 +1,6 @@
 # API для статистики по погоде
 
-### Источник данных [`accuweather`](https://developer.accuweather.com/apis)
+### Источник данных: [`accuweather`](https://developer.accuweather.com/apis)
 ###### Ruby: `3.1.2` Rails: `7.0.4` 
 
 ### Эндпоинты:
