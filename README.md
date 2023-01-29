@@ -7,11 +7,11 @@
 
 - /api/v1/weather/current - Текущая температура
 - /api/v1/weather/historical - Почасовая температура за последние 24 часа 
-- /api/v1/weather/historical/max - Максимальная темперетура за 24 часа
-- /api/v1/weather/historical/min - Минимальная темперетура за 24 часа
-- /api/v1/weather/historical/avg - Средняя темперетура за 24 часа
-- /api/v1/weather/by_time - ближайшая к переданному timestamp температура
-- /api/v1/health - Статус бекенда
+- /api/v1/weather/historical/max - Максимальная температура за 24 часа
+- /api/v1/weather/historical/min - Минимальная температура за 24 часа
+- /api/v1/weather/historical/avg - Средняя температура за 24 часа
+- /api/v1/weather/by_time - ближайшая к переданному "timestamp" температура
+- /api/v1/health - Статус бэкенда
 
 ### Дополнительные сведения:
 - Нагрузка на любой эндпоинт: 5 RPS;
