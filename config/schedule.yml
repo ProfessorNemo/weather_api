@@ -1,9 +1,9 @@
 :schedule:
-  forecast_update_bd:
-    cron: '* */3 * * *'
+  forecast_job:
+    cron: '0 */3 * * * Europe/Moscow'
     class: ForecastJob
     queue: default
   check_fill_bd_job:
-    cron: '*/1 * * * *'
+    cron: '* * * * * Europe/Moscow'
     class: CheckFillBdJob
     queue: default

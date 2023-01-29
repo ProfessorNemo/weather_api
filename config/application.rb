@@ -26,7 +26,7 @@ module WeatherApi
     config.load_defaults 7.0
 
     # Минимальный интервал между последовательными HTTP-запросами 5 сек.
-    config.middleware.use Rack::Throttle::Interval, min: 10 if Rails.env.production?
+    config.middleware.use Rack::Throttle::Interval, min: 5 if Rails.env.production?
 
     # Configuration for the application, engines, and railties goes here.
     #

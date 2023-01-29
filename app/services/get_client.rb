@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'database_cleaner/active_record'
+
 class GetClient
   CITY = 'St.Petersburg' # хардкод
   BASE_URL = 'https://dataservice.accuweather.com'
@@ -14,10 +16,10 @@ class GetClient
 
   # обновление прогноза
   def update_data
-    request.each do |data|
-      WeatherForecast.update(date: data['EpochTime'],
-                             temperature: data.dig('Temperature', 'Metric', 'Value'))
-    end
+    DatabaseCleaner.strategy = [:truncation, { only: :weather_forecasts }]
+    DatabaseCleaner.clean
+
+    create_data
   end
 
   private
@@ -52,7 +54,7 @@ class GetClient
 
   def options
     {
-      apikey: Rails.application.credentials[:api_key],
+      apikey: Rails.application.credentials[:token],
       q: CITY
     }
   end

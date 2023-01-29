@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class ForecastJob < ApplicationJob
-  discard_on ActiveJob::DeserializationError
-
   PATH = 'config/sidekiq.yml'
+  SCHEDULE = YAML.load(ERB.new(Rails.root.join(PATH).read).result)
   queue_as :default
-  sidekiq_options queue: YAML.load(ERB.new(Rails.root.join(PATH).read).result)[:queues][0]
-  sidekiq_options retry: YAML.load(ERB.new(Rails.root.join(PATH).read).result)[:max_retries]
+  sidekiq_options queue: SCHEDULE[:queues][0]
+  sidekiq_options retry: SCHEDULE[:max_retries]
 
   rescue_from(StandardError) do
     retry_job wait: 2.minutes, queue: :default

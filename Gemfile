@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bootsnap', require: false
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
@@ -16,16 +15,16 @@ gem 'tzinfo-data'
 group :test do
   gem 'factory_bot_rails'
   gem 'rspec-sidekiq'
-  gem 'vcr', '~> 6.1'
-  gem 'webmock', '3.3'
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development, :test do
   gem 'byebug', '~> 11.1'
-  gem 'dotenv-rails'
-  gem 'rspec-rails', '~> 6.0.0'
-  gem 'shoulda-matchers'
-  gem 'sidekiq', '~> 6.5'
+  gem 'fugit'
+  gem 'rspec-rails'
+  gem 'sidekiq'
   gem 'sidekiq-cron'
   gem 'time', '~> 0.2.1'
 end
@@ -45,4 +44,8 @@ end
 gem 'faraday', '~> 2.0'
 gem 'grape'
 gem 'grape_on_rails_routes'
-gem 'multi_json'
+
+group :test do
+  gem 'database_cleaner-active_record'
+end
+

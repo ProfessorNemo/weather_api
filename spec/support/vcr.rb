@@ -19,6 +19,6 @@ VCR.configure do |c|
   )
   # чтоб реальный токен не попал в кассеты (замена на заглушку "<api_token>")
   c.filter_sensitive_data('<api_token>') do
-    Rails.application.credentials[:api_token]
+    Rails.application.credentials[:token]
   end
 end

@@ -5,8 +5,8 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rspec/rails'
 require 'byebug'
-require 'dotenv/load'
 require 'webmock/rspec'
+require 'fugit'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
@@ -16,8 +16,9 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 
-# Загрузка любых файлов из директории support
+# Загрузка любых файлов из директории support и shared_examples
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+Dir[Rails.root.join('spec/shared_examples/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.fixture_path = "#{Rails.root}/spec/fixtures"
@@ -29,21 +30,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.example_status_persistence_file_path = 'spec/specs.txt'
-
-  # Разрешаем делать подключения к реальным сервисам
-  WebMock.allow_net_connect!
-  # WebMock.disable_net_connect!(allow_localhost: true)
-
-  WebMock::API.prepend(Module.new do
-    extend self
-    def stub_request(*args)
-      # Выключаем VCR в тех случаях, когда работает WebMock и наоборот
-      VCR.turn_off!
-      super
-    end
-  end)
-
-  config.before { VCR.turn_on! }
 end
 
 Shoulda::Matchers.configure do |config|
@@ -51,4 +37,8 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+RSpec::Sidekiq.configure do |config|
+  config.warn_when_jobs_not_processed_by_sidekiq = false
 end

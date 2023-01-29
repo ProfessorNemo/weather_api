@@ -15,7 +15,11 @@ run-console:
 	bundle exec rails console
 
 rspec:
+	bundle exec rspec spec/models/weather_forecast.rb
 	bundle exec rspec spec/lib/api/v1/weather_spec.rb
+	bundle exec rspec spec/service/get_client_spec.rb
+	bundle exec rspec spec/jobs/sidekiq_schedululer_spec.rb
+	bundle exec rspec spec/jobs/forecast_job_spec.rb
 
 c: run-console
 
