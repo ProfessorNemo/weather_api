@@ -35,7 +35,7 @@ $ git clone git@github.com:ProfessorNemo/weather_api.git
 $ bundle
 ```
 
-3. Чтобы задать географический объект (город), перейти по адресу `/app/services/get_client.rb` 
+3. Чтобы задать географический объект (город), нужно перейти по адресу `/app/services/get_client.rb` 
 и в константу "CITY" передать название города.
 
 
