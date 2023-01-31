@@ -6,7 +6,7 @@ drop:
 install:
 	rails db:create
 	rails db:migrate
-	rake download:from_apiz
+	rake download:from_api
 
 rubocop:
 	rubocop -A

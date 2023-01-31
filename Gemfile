@@ -6,27 +6,27 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 gem 'bootsnap', require: false
+gem 'faraday', '~> 2.0'
+gem 'grape'
+gem 'grape_on_rails_routes'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'sprockets-rails'
 gem 'tzinfo-data'
 
-group :test do
-  gem 'factory_bot_rails'
-  gem 'rspec-sidekiq'
-  gem 'shoulda-matchers'
-  gem 'vcr'
-  gem 'webmock'
-end
-
 group :development, :test do
   gem 'byebug', '~> 11.1'
+  gem 'database_cleaner-active_record'
+  gem 'factory_bot_rails'
   gem 'fugit'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'sidekiq'
   gem 'sidekiq-cron'
   gem 'time', '~> 0.2.1'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
@@ -41,11 +41,6 @@ group :production do
   gem 'rack-throttle'
 end
 
-gem 'faraday', '~> 2.0'
-gem 'grape'
-gem 'grape_on_rails_routes'
-
 group :test do
-  gem 'database_cleaner-active_record'
+  gem "rspec-sidekiq"
 end
-

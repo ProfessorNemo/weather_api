@@ -1,2 +1,2 @@
-web: ruby bin/rails server -d -p 3000
+web: ruby bin/rails server -p 3000
 worker: bundle exec sidekiq -q default
