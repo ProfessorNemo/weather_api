@@ -6,7 +6,7 @@ drop:
 install:
 	rails db:create
 	rails db:migrate
-	rake download:from_api
+	rake download:from_apiz
 
 rubocop:
 	rubocop -A
@@ -21,6 +21,11 @@ rspec:
 	bundle exec rspec spec/jobs/sidekiq_schedululer_spec.rb
 	bundle exec rspec spec/jobs/forecast_job_spec.rb
 
+stop:
+	sudo kill -9 `sudo lsof -t -i:3000`
+
 c: run-console
 
-.PHONY:	db
+.PHONY: db default
+default:
+	bash stop.sh
