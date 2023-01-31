@@ -65,8 +65,6 @@ $ make stop
 $ make rspec
 ```
 
-Откройте `localhost:3000` в браузере.
-
 
 
 
