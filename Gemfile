@@ -14,6 +14,7 @@ gem 'grape-swagger-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'rack-cors'
+gem 'rack-throttle'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'sprockets-rails'
 gem 'tzinfo-data'
@@ -38,10 +39,6 @@ group :development do
   gem 'rubocop-rails', '~> 2', require: false
   gem 'rubocop-rspec', require: false
   gem 'web-console'
-end
-
-group :production do
-  gem 'rack-throttle'
 end
 
 group :test do
