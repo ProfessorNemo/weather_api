@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module API
-  class Root < ::Grape::API
+  class Root < Grape::API
     version 'v1', using: :path
     format :json
     content_type :json, 'application/json; charset=utf-8'
