@@ -12,6 +12,7 @@
 - /api/v1/weather/historical/avg - Средняя температура за 24 часа
 - /api/v1/weather/by_time - ближайшая к переданному "timestamp" температура
 - /api/v1/health - Статус бэкенда
+- /api/v1/documentation - Документация для API
 
 ### Дополнительные сведения:
 - Нагрузка на любой эндпоинт: 5 RPS;
@@ -55,7 +56,7 @@ $ make install
 $ bin/dev
 ```
 
-7. Остановка сервера:
+7. Остановка сервера (либо "Ctrl+C"):
 ```
 $ make stop
 ```

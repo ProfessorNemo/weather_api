@@ -11,11 +11,6 @@ module API
                500, { 'Content-Type' => 'application/json' })
       end
 
-      version 'v1', using: :path
-      format :json
-      content_type :json, 'application/json; charset=utf-8'
-      prefix :api
-
       resource :weather do
         desc 'Returns current temperature'
         get :current do
@@ -54,6 +49,9 @@ module API
           { record: avg_temp, message: 'средняя температура за сутки' }
         end
 
+        desc 'Return nearest of temperature' do
+          detail 'The closest air temperature to the set point in time'
+        end
         params do
           requires :time, type: Integer
         end
