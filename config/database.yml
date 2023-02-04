@@ -2,13 +2,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: professor
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  password: <%= ENV["WEATHER_DATABASE_PASSWORD"] %>
 
 development:
   <<: *default
   database: weather_api_development
-  username: professor
-  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
 
 test:
   <<: *default
