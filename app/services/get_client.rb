@@ -33,9 +33,17 @@ class GetClient
     response ||= connection.get(CITY_URL,
                                 params: options,
                                 headers: { 'Content-type' => 'application/json' })
-
-    city_key = respond_with(response)
-    city_key[0]['Key']
+  rescue Faraday::Error => e
+    Rails.logger.error { "Ошибка соединения с сервером: #{e.message}" }
+    abort e.message
+  else
+    begin
+      city_key = respond_with(response)
+      city_key[0]['Key']
+    rescue StandardError => e
+      Rails.logger.error { "Ошибка в названии города!: #{e.message}" }
+      abort e.message
+    end
   end
 
   # запрос на получения данных о погоде
