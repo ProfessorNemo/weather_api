@@ -10,7 +10,7 @@ class CheckFillBdJob < ApplicationJob
     if WeatherForecast.count.zero?
       GetClient.new.update_data
     else
-      Rails.logger.debug 'Database is full'
+      Rails.logger.info 'Database is full!'
     end
   end
 end

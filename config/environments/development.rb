@@ -76,9 +76,12 @@ Rails.application.configure do
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
 
+  config.log_formatter = JsonSimpleFormatter.new
+
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    logger.info ActiveSupport::LogSubscriber.new.send(:color, "message", :red)
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 end
