@@ -32,4 +32,3 @@
 .idea/
 /spec/specs.txt
 .byebug_history
-/app/db/dump/*
