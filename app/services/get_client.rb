@@ -46,24 +46,5 @@ class GetClient
     end
   end
 
-  # запрос на получения данных о погоде
-  def request
-    response ||= Faraday.get("#{BASE_URL}/currentconditions/v1/#{location_key}/historical/24?",
-                             options.slice(:apikey))
 
-    respond_with(response)
-  end
-
-  def respond_with(response)
-    raise 'Не удалось получить данные с сервера' if response.body == 'null'
-
-    JSON.parse(response.body)
-  end
-
-  def options
-    {
-      apikey: Rails.application.credentials[:token],
-      q: CITY
-    }
-  end
 end
