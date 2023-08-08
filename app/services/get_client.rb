@@ -13,4 +13,12 @@ class GetClient
                      .first_or_create(temperature: data.dig('Temperature', 'Metric', 'Value'))
     end
   end
+
+  # обновление прогноза
+  def update_data
+    DatabaseCleaner.strategy = [:truncation, { only: :weather_forecasts }]
+    DatabaseCleaner.clean
+
+    create_data
+  end
 end
